@@ -98,10 +98,12 @@
           <textarea
             class="form-control"
             placeholder="add your description here"
-            id="floatingTextarea"
+            id="description"
           ></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Add to list</button>
+        <button id="add" type="submit" class="btn btn-primary">
+          Add to list
+        </button>
       </form>
       <div id="itemJson" class="my-4">
         <h2>Your items</h2>
@@ -144,20 +146,21 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      add = document.getElementById("add");
-      add.addEventListener("click", () => {
-        console.log("Updating List...");
-        tit = document.getElementById("title").value;
-        desc = document.getElementById("description").value;
-        if (localStorage.getItem("itemJson") == null) {
+      add = document.getElementById('add');
+      add.addEventListener('click', () => {
+        console.log('Updating List...');
+        tit = document.getElementById('title').value;
+        desc = document.getElementById('description').value;
+        console.log(desc);
+        if (localStorage.getItem('itemJson') == null) {
           itemJsonArray = [];
           itemJsonArray.push([tit, desc]);
-          localStorage.setItem("itemJson", JSON.stringify(itemJsonArray));
+          localStorage.setItem('itemJson', JSON.stringify(itemJsonArray));
         } else {
-          itemJsonArrayStr = localStorage.getItem("itemJson");
+          itemJsonArrayStr = localStorage.getItem('itemJson');
           itemJsonArray = JSON.parse(itemJsonArrayStr);
           itemJsonArray.push([tit, desc]);
-          localStorage.setItem("itemJson", JSON.stringify(itemJsonArray));
+          localStorage.setItem('itemJson', JSON.stringify(itemJsonArray));
         }
       });
     </script>
